@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 21-Mar-2017 20:47:41 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="property_business" name="model.pojo.PropertyPosts" optimistic-lock="version" table="property_posts">
+    <id name="idpropertyPosts" type="java.lang.Integer">
+      <column name="idproperty_posts"/>
+      <generator class="identity"/>
+    </id>
+    <property name="estateAgent" type="java.lang.Integer">
+      <column length="15" name="agent_uname"/>
+    </property>
+    <property name="propertyOwner" type="java.lang.Integer">
+      <column length="15" name="owner_uname"/>
+    </property>
+    <property name="title" type="string">
+      <column length="60" name="title" not-null="true"/>
+    </property>
+    <property name="description" type="string">
+      <column length="1000" name="description" not-null="true"/>
+    </property>
+    <property name="propertyType" type="string">
+      <column length="15" name="property_type" not-null="true"/>
+    </property>
+    <property name="address" type="string">
+      <column length="100" name="address" not-null="true"/>
+    </property>
+    <property name="postcode" type="string">
+      <column length="12" name="postcode" not-null="true"/>
+    </property>
+    <property name="bedroomCount" type="int">
+      <column name="bedroom_count" not-null="true"/>
+    </property>
+    <property name="bathroomCount" type="int">
+      <column name="bathroom_count" not-null="true"/>
+    </property>
+    <property name="furnishingStatus" type="string">
+      <column length="20" name="furnishing_status" not-null="true"/>
+    </property>
+    <property name="garage" type="int">
+      <column name="garage" not-null="true"/>
+    </property>
+    <property name="garden" type="int">
+      <column name="garden" not-null="true"/>
+    </property>
+    <property name="parking" type="int">
+      <column name="parking" not-null="true"/>
+    </property>
+    <property name="size" type="double">
+      <column name="size" not-null="true" precision="22" scale="0"/>
+    </property>
+    <property name="adType" type="string">
+      <column length="4" name="ad_type" not-null="true"/>
+    </property>
+    <property name="price" type="int">
+      <column name="price" not-null="true"/>
+    </property>
+    <property name="postingStatus" type="int">
+      <column name="posting_status" not-null="true"/>
+    </property>
+    <property name="postDate" type="date">
+      <column length="10" name="post_date" not-null="true"/>
+    </property>
+    <property name="images" type="string">
+      <column length="400" name="images"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="feedbacks" table="feedback">
+      <key>
+        <column name="property_id"/>
+      </key>
+      <one-to-many class="model.pojo.Feedback"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="offers" table="offer">
+      <key>
+        <column name="property_id"/>
+      </key>
+      <one-to-many class="model.pojo.Offer"/>
+    </set>
+  </class>
+</hibernate-mapping>

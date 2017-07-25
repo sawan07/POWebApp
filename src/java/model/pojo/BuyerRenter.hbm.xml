@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23-Mar-2017 11:45:05 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.pojo.BuyerRenter" table="buyer_renter" catalog="property_business" optimistic-lock="version">
+        <id name="buyerRenterId" type="java.lang.Integer">
+            <column name="buyer_renter_id" />
+            <generator class="native" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="200" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="32" not-null="true" />
+        </property>
+        <property name="gender" type="string">
+            <column name="gender" length="11" />
+        </property>
+        <property name="address" type="string">
+            <column name="address" length="100" not-null="true" />
+        </property>
+        <property name="telephone" type="string">
+            <column name="telephone" length="14" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45" not-null="true" unique="true" />
+        </property>
+        <property name="age" type="int">
+            <column name="age" not-null="true" />
+        </property>
+        <property name="signupDate" type="date">
+            <column name="signup_date" length="10" not-null="true" />
+        </property>
+        <property name="image" type="string">
+            <column name="image" length="300" />
+        </property>
+        <property name="buyerRenterUname" type="string">
+            <column name="buyer_renter_uname" length="30" not-null="true" unique="true" />
+        </property>
+        <set name="offers" table="offer" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="buyer_id" length="15" />
+            </key>
+            <one-to-many class="model.pojo.Offer" />
+        </set>
+    </class>
+</hibernate-mapping>

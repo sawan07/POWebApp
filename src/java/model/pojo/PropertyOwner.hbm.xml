@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 21-Mar-2017 20:47:41 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="property_business" name="model.pojo.PropertyOwner" optimistic-lock="version" table="property_owner">
+    <id name="propertyOwnerId" type="java.lang.Integer">
+      <column name="property_owner_id"/>
+      <generator class="identity"/>
+    </id>
+    <property name="name" type="string">
+      <column length="200" name="name" not-null="true"/>
+    </property>
+    <property name="password" type="string">
+      <column length="32" name="password" not-null="true"/>
+    </property>
+    <property name="gender" type="string">
+      <column length="11" name="gender"/>
+    </property>
+    <property name="address" type="string">
+      <column length="100" name="address" not-null="true"/>
+    </property>
+    <property name="telephone" type="string">
+      <column length="14" name="telephone" not-null="true"/>
+    </property>
+    <property name="email" type="string">
+      <column length="45" name="email" not-null="true" unique="true"/>
+    </property>
+    <property name="dob" type="date">
+      <column length="10" name="dob" not-null="true"/>
+    </property>
+    <property name="signupDate" type="date">
+      <column length="10" name="signup_date" not-null="true"/>
+    </property>
+    <property name="image" type="string">
+      <column length="300" name="image"/>
+    </property>
+    <property name="propertyOwnerUname" type="string">
+      <column length="45" name="property_owner_uname" not-null="true" unique="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="propertyPostses" table="property_posts">
+      <key>
+        <column length="15" name="owner_uname"/>
+      </key>
+      <one-to-many class="model.pojo.PropertyPosts"/>
+    </set>
+  </class>
+</hibernate-mapping>

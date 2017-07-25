@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 21-Mar-2017 20:47:41 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="property_business" name="model.pojo.Offer" optimistic-lock="version" table="offer">
+    <id name="idoffer" type="java.lang.Integer">
+      <column name="idoffer"/>
+      <generator class="native"/>
+    </id>
+    <property  name="buyerRenterID" type="java.lang.Integer">
+      <column name="buyer_id"/>
+    </property>
+    <property  name="propertyPostsID" type="java.lang.Integer">
+      <column name="property_id"/>
+    </property>
+<!--    <many-to-one class="model.pojo.PropertyPosts" fetch="select" name="propertyPostsID">
+      <column name="property_id"/>
+    </many-to-one>-->
+    <property name="date" type="date">
+      <column length="10" name="date" not-null="true"/>
+    </property>
+    <property name="amount" type="double">
+      <column name="amount" not-null="true" precision="22" scale="0"/>
+    </property>
+    <property name="comment" type="string">
+      <column length="150" name="comment"/>
+    </property>
+    <property name="approval" type="int">
+      <column name="approval" not-null="true"/>
+    </property>
+    <property name="approvalDate" type="date">
+      <column length="10" name="approval_date"/>
+    </property>
+    <property name="currency" type="string">
+      <column length="15" name="currency" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>
